@@ -4,7 +4,7 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 
-const port = process.env.PORT ||3000
+const port = process.env.PORT ||5000
 
 const instructors = [
   {
@@ -106,4 +106,4 @@ const instructors = [
     response.json(record);
   });
 
-  app.listen(3000);
+  app.listen(5000);
