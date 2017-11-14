@@ -1,10 +1,10 @@
-const express = require('express');
-const cors = require('cors');
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
 app.use(cors());
 
-const port = process.env.PORT ||3000
+const port = process.env.PORT ||3000;
 const instructors = [
   {
     id: 1,
@@ -79,30 +79,30 @@ const instructors = [
     "Number of dogs": 1
   }];
 
-  function getID(data, id){
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].id == id){
-        return data[i];
-      }
+function getID(data, id){
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].id == id){
+      return data[i];
     }
-    return null;
   }
+  return null;
+}
 
-  app.get("/", function(request, response){
-    response.json(instructors);
-  });
+app.get("/", function(request, response){
+  response.json(instructors);
+});
 
-  app.get("/:id", function(request, response){
-    var record = getID(instructors, request.params.id);
-    if (!record){
-      response.status(404);
-      response.json({
-        error: {
-          message: "No record found!"
-        }
-      });
-    }
-    response.json(record);
-  });
+app.get("/:id", function(request, response){
+  var record = getID(instructors, request.params.id);
+  if (!record){
+    response.status(404);
+    response.json({
+      error: {
+        message: "No record found!"
+      }
+    });
+  }
+  response.json(record);
+});
 
-  app.listen(port);
+app.listen(port);
